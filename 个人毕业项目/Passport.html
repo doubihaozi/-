@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="//qidian.gtimg.com/qd/favicon/qd_icon.fb0b7.ico" />
+    <link href="CSS/PassportStyle.css" rel="stylesheet" />
+    <title>帐号注册</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header rec-header qidian">
+            <div class="box-center">
+                <div class="logo cf">
+                <a href="/Origin.html"></a>
+                <em></em>
+                <span class="lang">用户注册</span>
+                </div>
+            </div>
+        </div>
+        <div class="box-center">
+            <div class="reg-wrap">
+                <div class="reg-step">
+                    <span class="lang act"><i>1</i>填写注册信息</span>
+                    <span>注册成功</span>
+                </div>
+            </div>
+            <div class="reg-form-wrap">
+                <form>
+                    <div class="reg-form-list form-list">
+                        <dl>
+                            <dd class="phone">
+                                <em>手机号</em>
+                                <input class="min" id="Phone" type="text" placeholder="输入手机号码" />
+                            </dd>
+                            <dd>
+                                <em>账号</em>
+                                <input id="Uid" type="text" placeholder="填写账号" />
+                            </dd>
+                            <dd>
+                                <em>密码</em>
+                                <input  id="Password" type="password" placeholder="6-18位大小写字母、符号或者数字" />
+                            </dd>
+                            <dd>
+                                <em>确认密码</em>
+                                <input  id="Password2" type="password" placeholder="再次输入密码" />
+                            </dd>
+                        </dl>
+                        <div class="deal">
+                            <input type="checkbox" id="deal" name="checkbox" checked="">
+                            <label for="deal" class="ui-checkbox"></label>
+                            <label for="deal">我已阅读并同意</label>
+                            <a href="https://passport.yuewen.com/pact.html?mobile=0" target="_blank">《用户服务协议》</a>
+                        </div>
+                        <a class="red-btn go-reg">立即注册</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function newGuid() {
+        var guid = "";
+        for (var i = 1; i < 32; i++) {
+            var n = Math.floor(Math.random() * 16.0).tostring(16);
+            guid += n;
+            if ((i == 8) || (i == 12) || (i == 16) || (i == 20)) {
+                guid += "-";
+            }
+            return guid;
+        }
+    }
+    function InsertCustomer() {
+        var userName = document.getElementById("Uid").value;
+        var regName = /[a-zA-Z]\w{4,16}/;
+        if (userName == "" || userName.trim() == "") {
+            document.getElementById("Uid").innerHTML = "请输入用户名";
+            return false;
+        } else if (!regName == userName) {} 
+    }
+    
+</script>

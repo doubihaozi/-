@@ -1,0 +1,724 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="//qidian.gtimg.com/qd/favicon/qd_icon.fb0b7.ico" />
+    <link rel="stylesheet" type="text/css" href="CSS/Originstyle.css" />
+    <link href="CSS/Carousel.css" rel="stylesheet" />
+    <script src="JS/jquery-3.2.1.min (1).js"></script>
+    <title>起点中文网</title>
+    <style type="text/css">
+        #close {
+            background: url(Image/ICO/close.png) no-repeat;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            top: 15px;
+            text-indent: -999em;
+        }
+
+        #mask {
+            background: #000;
+            opacity: 0.55;
+            filter: alpha(opacity=50);
+            /*暂时为1000、之后通过JS修改*/
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #login {
+            position: fixed;
+            z-index: 1001;
+        }
+
+        .loginCon {
+            position: relative;
+            width: 670px;
+            height: 380px;
+            background: url(Image/ICO/loginBg.png) #2A2C2E center center no-repeat;
+        }
+    </style>
+</head>
+<body style="zoom:1;">
+    <div class="wark">
+        <div class="top-nav">
+            <div class="nav-link fl">
+                <a class="act" href="#">起点中文网</a>
+                <a href="#">起点女生网</a>
+                <em>|</em>
+                <a href="#">创世中文网</a>
+                <em>|</em>
+                <a href="#">云起书院</a>
+                <em>|</em>
+                <a id="switchEl">繁体版</a>
+            </div>
+            <div class="Login-box fr">
+                <div class="sin-out">
+                    <span><a href="#" id="login-btn" class="black">登录</a></span>
+                    <em>|</em>
+                    <span><a href="/Passport.html" id="reg-btn">注册</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="logo-wrap box-center" data-l1="2">
+            <div class="box-center cf">
+                <div class="book-shelf fr">
+                    <a href="#" target="_blank" id="numero2">
+                        <em class="iconfont shelf">□</em>
+                        <i>我的书架</i>
+                    </a>
+                </div>
+                <div class="logo fl">
+                    <a class=""></a>
+                </div>
+                <div class="search-wrap">
+                    <form id="formurl" method="get" target="_blank">
+                        <p><input class="search-box" id="s-box" type="text" name="kw" /></p>
+                        <input type="submit" name="subSearch" class="submit-btn" id="searchSubmit" />
+                        <label id="search-btn" class="search-btn" for="searchSubmit" style="cursor:pointer">
+                            <em class="inconfont"></em>
+                        </label>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="main-nav-warp">
+            <div class="main-nav box-center cf">
+                <ul>
+                    <li class="first">
+                        <span>
+                            <em>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </em>
+                            作品分类
+                        </span>
+                    </li>
+                    <li class="nav-li"><a href="#">全部作品</a></li>
+                    <li class="nav-li"><a href="#">排行</a></li>
+                    <li class="nav-li"><a href="#">完本</a></li>
+                    <li class="nav-li"><a href="#">免费</a></li>
+                    <li class="nav-li"><a href="#">作家专区</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="focus-wrap box-center mb40 cf">
+            <div class="classify-list fl so-awesome" id="classify-list">
+                <dl>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em></em>
+                                <span class="info"><i>玄幻</i><b>639554</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em></em>
+                                <span class="info"><i>奇幻</i><b>140963</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em></em>
+                                <span class="info"><i>武侠</i><b>38911</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em></em>
+                                <span class="info"><i>仙侠</i><b>218586</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em></em>
+                                <span class="info"><i>都市</i><b>346654</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em></em>
+                                <span class="info"><i>现实</i><b>14540</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd class="even">
+                        <a href="#">
+                            <cite>
+                                <em class="iconfont"></em>
+                                <span class="info"><i>军事</i><b>19479</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em class="iconfont"> </em>
+                                <span class="info"><i>历史</i><b>74972</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em class="iconfont"></em>
+                                <span class="info"><i>游戏</i><b>74972</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em class="iconfont"></em>
+                                <span class="info"><i>体育</i><b>100176</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em class="iconfont"></em>
+                                <span class="info"><i>科幻</i><b>9469</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em class="iconfont"></em>
+                                <span class="info"><i>灵异</i><b>140013</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em class="iconfont"></em>
+                                <span class="info"><i>女生网</i><b>56943</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a>
+                            <cite>
+                                <em class="iconfont"></em>
+                                <span class="info"><i>二次元</i><b>676610</b></span>
+                            </cite>
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="focus-box fl">
+                <div class="focus-slider" id="boxId">
+                    <div class="lbf-slides">
+                        <ul>
+                            <li>
+                                <a href="#"><img src="//qidian.qpic.cn/qidian_common/349573/bf4a84939db82e04eb3ba69bfc1c1424/0"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="focus-img cf">
+                    <ul>
+                        <li>
+                            <span class="op-tag"></span>
+                            <a href="#" target="_blank">
+                                <img src="//qidian.qpic.cn/qidian_common/349573/ad7666ee0799349b854f9a2b7efab5d4/0">
+                            </a>
+                        </li>
+                        <li class="middle">
+                            <span class="op-tag"></span>
+                            <a href="#" target="_blank">
+                                <img src="//qidian.qpic.cn/qidian_common/349573/568e6070e9833a5e8f7c410dd8e6b4de/0">
+                            </a>
+                        </li>
+                        <li>
+                            <span class="op-tag"></span>
+                            <a href="#" target="_blank">
+                                <img src="//qidian.qpic.cn/qidian_common/349573/36132845b6bb7dd43c2e2296d993d3db/0">
+                            </a>
+                        </li>
+                    </ul>
+                    -
+                </div>
+            </div>
+            <div class="notice-wrap fr">
+                <div class="notice" id="notice">
+                    <a class="more" id="more-notice" href="#">
+                        <em class="dib-wrap point">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </em>
+                        <i style="top:-18px; right:-18px;"></i>
+                    </a>
+                    <h3>
+                        <a href="#">爱潜水的乌贼新作来袭</a>
+                    </h3>
+                    <div class="notice-list">
+                        <ul>
+                            <li class="color-type_0">
+                                <a href="#">
+                                    <i>「</i>资讯<i>」</i>猛鬼之约微小说征文
+                                </a>
+                            </li>
+                            <li class="color-type_0">
+                                <a href="#">
+                                    <i>「</i>资讯<i>」</i>丛林狼新书最强狙击手
+                                </a>
+                            </li>
+                            <li class="color-type_0">
+                                <a href="#">
+                                    <i>「</i>资讯<i>」</i>灵异中元祭征文宣奖
+                                </a>
+                            </li>
+                            <li class="color-type_0">
+                                <a href="#">
+                                    <i>「</i>资讯<i>」</i>烟雨江南王者归来
+                                </a>
+                            </li>
+                            <li class="color-type_0">
+                                <a href="#">
+                                    <i>「</i>资讯<i>」</i>最强新人北狗新书登场
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="notice-banner">
+                    <a href="#">
+                        <img src="//qidian.qpic.cn/qidian_common/349573/bc04a6a207697c8d8bab384926793c3e/0">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="index-two-wrap box-center mb40 cf">
+            <div class="book-list-wrap mr30 fl">
+                <h3 class="wrap-title lang">
+                    本周强推
+                    <a class="more"></a>
+                </h3>
+                <div class="book-list">
+                    <ul>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="餐饮巨头">餐饮巨头</a></strong>
+                            <a href="#" class="author">義海藏龙</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>科幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="道闯乾坤">道闯乾坤</a></strong>
+                            <a href="#" class="author">顿顿蛋炒饭</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>历史<em>」</em></a>
+                            <strong><a href="#" class="name" title="手眼通天">手眼通天</a></strong>
+                            <a href="#" class="author">暗形</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>历史<em>」</em></a>
+                            <strong><a href="#" class="name" title="闲臣风流">闲臣风流</a></strong>
+                            <a href="#" class="author">农山尽</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>仙侠<em>」</em></a>
+                            <strong><a href="#" class="name" title="仙侠论坛">仙侠论坛</a></strong>
+                            <a href="#" class="author">人氏言调</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>玄幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="超维入侵">超维入侵</a></strong>
+                            <a href="#" class="author">一念乱天机</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="纯情大明星">纯情大明星</a></strong>
+                            <a href="#" class="author">冒牌大叔</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>军事<em>」</em></a>
+                            <strong><a href="#" class="name" title="红色莫斯科">红色莫斯科</a></strong>
+                            <a href="#" class="author">涂抹记忆</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>体育<em>」</em></a>
+                            <strong><a href="#" class="name" title="NBA之王">NBA之王</a></strong>
+                            <a href="#" class="author">幸福微光01</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>奇幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="奈格里之魂">奈格里之魂</a></strong>
+                            <a href="#" class="author">虚鸣</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>玄幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="完美配角系统">完美配角系统</a></strong>
+                            <a href="#" class="author">知行难易</a>
+                        </li>
+                        <li class="str3">
+                            <a href="#" class="channel"><em>「</em>二次元<em>」</em></a>
+                            <strong><a href="#" class="name" title="木叶之壕杰忍传">木叶之壕杰忍传</a></strong>
+                            <a href="#" class="author">末日黄瓜</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>科幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="电影世界大融合">电影世界大融合</a></strong>
+                            <a href="#" class="author">七年零七天</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="重生之作死大宗师" style="max-width:90px;">重生之作死大宗师</a></strong>
+                            <a href="#" class="author">碧云桃子</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="美国牧场的小生活" style="max-width:90px;">美国牧场的小生活</a></strong>
+                            <a href="#" class="author">醛石</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>游戏<em>」</em></a>
+                            <strong><a href="#" class="name" title="不可名状的日记簿" style="max-width:90px;">不可名状的日记簿</a></strong>
+                            <a href="#" class="author">悲伤之人的</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>灵异<em>」</em></a>
+                            <strong><a href="#" class="name" title="厉鬼的108种吃法" style="max-width:90px;">厉鬼的108种吃法</a></strong>
+                            <a href="#" class="author">侯开心</a>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="修真聊天群" style="max-width:90px;">修真聊天群</a></strong>
+                            <a href="#" class="author" title="圣骑士的传说">圣骑士的传说</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="edit-rec-wrap fl">
+                <h3 class="wrap-title lang">编辑推荐</h3>                
+                <div class="edit-rec">
+                    <ul class="edit-rec-list bd cf">
+                        <li>
+                            <h3>
+                                <a href="#">我真的不是吹牛逼</a>
+                            </h3>
+                            <em class="total">
+                                <cite>98,409</cite>
+                                <i>人在追</i>
+                            </em>
+                            <p>吹牛逼系统发现宿主，绑定中，请稍后...</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="#">烟雨江南新书道缘浮图来袭</a>
+                            </h3>
+                            <em class="total"><cite>40,649</cite><i>人在追</i></em>
+                            <p>谁家年少，煮酒调笑。盈握素腰，同舟醉邀。</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="#">寻找至高美味</a>
+                            </h3>
+                            <em class="total"><cite>65,782</cite><i>人在追</i></em>
+                            <p>获得手术果实，穿越猎人世界，无限的未知大陆在我眼前展开！</p>
+                        </li>
+                    </ul>
+                    <div class="rel">
+                        <p class="line"></p>
+                    </div>
+                    <ul class="edit-rec-list cf">
+                        <li>
+                            <h3>
+                                <a href="#">一卷推衍之术,执掌苍生大劫</a>
+                            </h3>
+                            <em class="total"><cite>69,126</cite><i>人在追</i></em>
+                            <p>苦修成绩作废,而后从杂役弟子做起,借一卷推衍之术,执掌苍生大劫</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="#">武侠世界轮回者:超凡强者</a>
+                            </h3>
+                            <em class="total"><cite>30,169</cite><i>人在追</i></em>
+                            <p>一个平凡滴骚年,行走在武侠世界,最终成为超凡强者的故事</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="#">张生不出,奈天下何！？</a>
+                            </h3>
+                            <em class="total"><cite>82,307</cite><i>人在追</i></em>
+                            <p>西汉中期,民生聊困,国势日衰,于是,谚曰:张与刘,共天下</p>
+                        </li>
+                    </ul>
+                    <div class="rel">
+                        <p class="line"></p>
+                    </div>
+                    <ul class="edit-rec-list cf">
+                        <li>
+                            <h3>
+                                <a href="#">我叫楚休,万事皆休的休</a>
+                            </h3>
+                            <em class="total"><cite>117,146</cite><i>人在追</i></em>
+                            <p>意外身亡，楚休发现自己竟然穿越到游戏世界《大江湖》当中。</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="#">两端记忆,一段人生</a>
+                            </h3>
+                            <em class="total"><cite>56,024</cite><i>人在追</i></em>
+                            <p>且看低调学子如何华丽转身，在大鳄环伺的商业领域铸就别样传奇</p>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="#">动植物疯狂变异、返祖</a>
+                            </h3>
+                            <em class="total"><cite>23,848</cite><i>人在追</i></em>
+                            <p>动植物疯狂变异、返祖，异界物种沦落地星，人类诞生全新的职业御使</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="book-list-wrap fr">
+                <h3 class="wrap-title lang">
+                    三江
+                    <i>.</i>
+                    网文新风
+                </h3>
+                <div class="book-list">
+                    <ul>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>军事<em>」</em></a>
+                            <strong><a href="#" class="name" title="幕后">幕后</a></strong>
+                            <span class="rec">谍海惊魂</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>玄幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="种运之眼">种运之眼</a></strong>
+                            <span class="rec">香破气运</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>历史<em>」</em></a>
+                            <strong><a href="#" class="name" title="大秦龙雀">大秦龙雀</a></strong>
+                            <span class="rec">架空帝国</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>仙侠<em>」</em></a>
+                            <strong><a href="#" class="name" title="夺运书生">夺运书生</a></strong>
+                            <span class="rec">气运修真</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>玄幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="神话禁区">神话禁区</a></strong>
+                            <span class="rec">神话进化</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="现实大富翁">现实大富翁</a></strong>
+                            <span class="rec">宅男赚钱</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>游戏<em>」</em></a>
+                            <strong><a href="#" class="name" title="勇者斗魔神">勇者斗魔神</a></strong>
+                            <span class="rec">网游异界</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>仙侠<em>」</em></a>
+                            <strong><a href="#" class="name" title="洪荒之石矶">洪荒之石矶</a></strong>
+                            <span class="rec">洪荒石矶</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>玄幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="鬼界大善人">鬼界大善人</a></strong>
+                            <span class="rec">鬼界善人</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="重生似水青春">重生似水青春</a></strong>
+                            <span class="rec">重生过去</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>科幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="我的末世领地">我的末世领地</a></strong>
+                            <span class="rec">末世种田</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>科幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="穿越反派之子">穿越反派之子</a></strong>
+                            <span class="rec">无限穿越</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="其实我是一个魔王">其实我是一个魔王</a></strong>
+                            <span class="rec">轻松系统</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>都市<em>」</em></a>
+                            <strong><a href="#" class="name" title="有关设定的骚操作">有关设定的骚操作</a></strong>
+                            <span class="rec">搞笑系统</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>奇幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="守望先锋入侵美漫">守望先锋入侵美漫</a></strong>
+                            <span class="rec">同人世界</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>二次元<em>」</em></a>
+                            <strong><a href="#" class="name" title="拳拳到肉的综漫游记">拳拳到肉的综漫游记</a></strong>
+                            <span class="rec">一拳超人</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>灵异<em>」</em></a>
+                            <strong><a href="#" class="name" title="深夜书屋">深夜书屋</a></strong>
+                            <span class="rec">纯洁滴小龙</span>
+                        </li>
+                        <li>
+                            <a href="#" class="channel"><em>「</em>玄幻<em>」</em></a>
+                            <strong><a href="#" class="name" title="牧神记">牧神记</a></strong>
+                            <span class="rec">宅猪</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="banner-wrap box-center mb40 ">
+            <img src="//qidian.qpic.cn/qidian_common/349573/60a4915f0239cbc0ade6686cfb19f04f/0">
+        </div>
+        <div class="new-rec-wrap box-centers cf">
+            <div class="left-wrap fl">
+                <h3 class="wrap-title lang">新书推荐</h3>
+            </div>
+            <div class="slider">
+                <div class="slider-img">
+                    <ul class="slider-img-ul">
+                        <li><img src="//qidian.qpic.cn/qidian_common/349573/db493af100e9b5b394a023e596f63171/0" /></li>
+                        <li><img src="//qidian.qpic.cn/qidian_common/349573/faae7abcdf6a6d75e35f8a86cf8b0b4e/0" /></li>
+                        <li><img src="//qidian.qpic.cn/qidian_common/349573/7a811006b9ec2d76e65013d0c8663237/0" /></li>
+                        <li><img src="//qidian.qpic.cn/qidian_common/349573/ba290b8fe5155a9b2666158185445dd7/0" /></li>
+                        <li><img src="//qidian.qpic.cn/qidian_common/349573/db493af100e9b5b394a023e596f63171/0" /></li>
+                        <li><img src="//qidian.qpic.cn/qidian_common/349573/faae7abcdf6a6d75e35f8a86cf8b0b4e/0" /></li>
+                    </ul>
+                </div>
+            </div><!--图片轮播-->
+        </div>
+        <div class="footer">
+            <div class="box-center cf">
+                <div class="friend-link">
+                    <em><a class="yuewen" href="//www.yuewen.com" target="_blank">阅文集团</a><cite>旗下网站：</cite></em>
+                    <a href="#">起点中文网</a>
+                    <a href="#" target="_blank">起点女生网</a>
+                    <a href="#" target="_blank">创世中文网</a>
+                    <a href="#" target="_blank">云起书院</a>
+                    <a href="#" target="_blank">红袖添香</a>
+                    <a href="#" target="_blank">小说阅读网</a>
+                    <a href="#" target="_blank">言情小说吧</a>
+                    <a href="#" target="_blank">潇湘书院</a>
+                    <a href="#" target="_blank">天方听书网</a>
+                    <a href="#" target="_blank">懒人听书</a>
+                    <a href="#" target="_blank">阅文悦读</a>
+                    <a href="#" target="_blank">QQ阅读</a>
+                    <a href="#" target="_blank">起点读书</a>
+                    <a href="#" target="_blank">作家助手</a>
+                    <a href="#" target="_blank" title="Qidian International">起点国际版</a>
+                </div>
+                <div class="footer-menu dib-wrap">
+                    <a href="#" target="_blank">关于起点</a>
+                    <a href="#" target="_blank">联系我们</a>
+                    <a href="#" target="_blank">加入我们</a>
+                    <a href="#" target="_blank">帮助中心</a>
+                    <a href="#" class="advice" target="_blank">提交建议</a>
+                    <a href="#" target="_blank">动漫频道</a>
+                    <a href="#" target="_blank">举报中心</a>
+                </div>
+                <div class="copy-right">
+                <p><span>Copyright © 2002-2018 www.qidian.com All Rights Reserved</span>
+                    版权所有 上海玄霆娱乐信息科技有限公司</p>
+                <p>上海玄霆娱乐信息科技有限公司 增值电信业务经营许可证沪B2-20080046 出版经营许可证 新出发沪批字第U3718号 沪网文[2015]0081-031 新出网证（沪）字010 沪ICP备08017520号-1</p>
+                <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何色情小说，一经发现，即作删除！举报电话：010-59357051</p>
+                <p>本站所收录的作品、社区话题、用户评论、用户上传内容或图片等均属用户个人行为。如前述内容侵害您的权益，欢迎举报投诉，一经核实，立即删除，本站不承担任何责任</p>
+                <p>联系方式 总机 021-61870500 地址：中国（上海）自由贸易试验区碧波路690号6号楼101、201室</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div id="mask">
+    </div>
+    <div id="login">
+        <div class="loginCon">
+            <div id="Close"></div>
+        </div>
+    </div>-->
+</body>
+</html>
+<script src="JS/xSlider.js"></script>
+<script>
+   
+    function openNew() {
+
+        //获取页面的高度和宽度
+        var sHeight = document.documentElement.scrollHeight;
+        var sWidth = document.documentElement.scrollWidth;
+        //可视区域的高度和宽度
+        var wHeight = document.documentElement.clientHeight;
+        var wWidth = document.documentElement.clientWidth;
+
+        var oMask = document.createElement("div");
+        oMask.id = "mask";
+        oMask.style.height = sHeight + "px";
+        oMask.style.width = sWidth + "px";
+        document.body.appendChild(oMask);
+
+        var oLogin = document.createElement("div");
+        oLogin.id = "login";
+        oLogin.innerHTML = "<div class='loginCo'><div id = 'close'>点击关闭</div ></div >";
+        document.body.appendChild(oLogin);
+        //获取Login的高度和宽度
+        var dHeight = oLogin.offsetHeight;
+        var dWidth = oLogin.offsetWidth;
+        //设置登录框的left和top
+        oLogin.style.left = (wWidth - dWidth) / 2 + "px";
+        oLogin.style.top = (wHeight - dHeight) / 2 + "px";
+        //点击关闭按钮
+        var oClose = document.getElementById("close");
+
+        oClose.onclick = oMask.onclick = function () {
+            document.body.removeChild(oLogin);
+            document.body.removeChild(oMask);
+        };
+    };
+    window.onload = function () {
+        var Login = document.getElementById("login-btn");
+        Login.onclick = function () {
+            openNew();
+            return false;
+        };
+    };
+</script>
+
+<!--<script>
+    myFocus.set({
+        id: 'boxId',
+        pattern: 'mF_peijianmall',
+        time: 3,
+        trigger: 'click',
+        width: 748,
+        height: 250,
+        txtHeight: 0
+    });
+</script>-->
