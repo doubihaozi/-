@@ -8,6 +8,7 @@ namespace Model
 {
     public class Customer
     {
+        public string ID { get; set; }
         public  string LoginName { get; set; }
         public  string Password { get; set; }
         public  string CustomerName{get;set;}

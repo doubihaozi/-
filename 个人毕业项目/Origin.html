@@ -6,41 +6,14 @@
     <link rel="icon" type="image/x-icon" href="//qidian.gtimg.com/qd/favicon/qd_icon.fb0b7.ico" />
     <link rel="stylesheet" type="text/css" href="CSS/Originstyle.css" />
     <link href="CSS/Carousel.css" rel="stylesheet" />
-    <script src="JS/jquery-3.2.1.min (1).js"></script>
+    <link href="CSS/Loginstyle.css" rel="stylesheet" />
+    <script src="JS/jquery-3.2.1.min.js"></script>
     <title>起点中文网</title>
     <style type="text/css">
-        #close {
-            background: url(Image/ICO/close.png) no-repeat;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            position: absolute;
-            right: 5px;
-            top: 15px;
-            text-indent: -999em;
-        }
-
-        #mask {
-            background: #000;
-            opacity: 0.55;
-            filter: alpha(opacity=50);
-            /*暂时为1000、之后通过JS修改*/
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 1000;
-        }
-
         #login {
-            position: fixed;
+            position: absolute;
             z-index: 1001;
-        }
-
-        .loginCon {
-            position: relative;
-            width: 670px;
-            height: 380px;
-            background: url(Image/ICO/loginBg.png) #2A2C2E center center no-repeat;
+            margin-left: -24px;
         }
     </style>
 </head>
@@ -59,7 +32,7 @@
             </div>
             <div class="Login-box fr">
                 <div class="sin-out">
-                    <span><a href="#" id="login-btn" class="black">登录</a></span>
+                    <span><a href="#" id="login" class="black">登录</a></span>
                     <em>|</em>
                     <span><a href="/Passport.html" id="reg-btn">注册</a></span>
                 </div>
@@ -412,7 +385,7 @@
                 </div>
             </div>
             <div class="edit-rec-wrap fl">
-                <h3 class="wrap-title lang">编辑推荐</h3>                
+                <h3 class="wrap-title lang">编辑推荐</h3>
                 <div class="edit-rec">
                     <ul class="edit-rec-list bd cf">
                         <li>
@@ -647,13 +620,35 @@
                     <a href="#" target="_blank">举报中心</a>
                 </div>
                 <div class="copy-right">
-                <p><span>Copyright © 2002-2018 www.qidian.com All Rights Reserved</span>
-                    版权所有 上海玄霆娱乐信息科技有限公司</p>
-                <p>上海玄霆娱乐信息科技有限公司 增值电信业务经营许可证沪B2-20080046 出版经营许可证 新出发沪批字第U3718号 沪网文[2015]0081-031 新出网证（沪）字010 沪ICP备08017520号-1</p>
-                <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何色情小说，一经发现，即作删除！举报电话：010-59357051</p>
-                <p>本站所收录的作品、社区话题、用户评论、用户上传内容或图片等均属用户个人行为。如前述内容侵害您的权益，欢迎举报投诉，一经核实，立即删除，本站不承担任何责任</p>
-                <p>联系方式 总机 021-61870500 地址：中国（上海）自由贸易试验区碧波路690号6号楼101、201室</p>
+                    <p>
+                        <span>Copyright © 2002-2018 www.qidian.com All Rights Reserved</span>
+                        版权所有 上海玄霆娱乐信息科技有限公司
+                    </p>
+                    <p>上海玄霆娱乐信息科技有限公司 增值电信业务经营许可证沪B2-20080046 出版经营许可证 新出发沪批字第U3718号 沪网文[2015]0081-031 新出网证（沪）字010 沪ICP备08017520号-1</p>
+                    <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何色情小说，一经发现，即作删除！举报电话：010-59357051</p>
+                    <p>本站所收录的作品、社区话题、用户评论、用户上传内容或图片等均属用户个人行为。如前述内容侵害您的权益，欢迎举报投诉，一经核实，立即删除，本站不承担任何责任</p>
+                    <p>联系方式 总机 021-61870500 地址：中国（上海）自由贸易试验区碧波路690号6号楼101、201室</p>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="overCurtain"></div>
+    <div class="hide-center">
+        <div id="formhead">
+            <div id="formhead-title">
+                User Login
+            </div>
+            <button type="button" id="close">X</button>
+        </div>
+        <div id="formbody">
+            <div class="loginUserName">
+                <input id="input-topright-loginInput" name="userName" class="loginInput" placeholder="userName" type="text"autocomplete="off" maxlength="11" >
+            </div>
+            <div class="loginPassword">
+                <input id="input-bottomright-loginInput" name="password" class="loginInput" placeholder="password" type="password" style="border-bottom-right-radius:5px;"autocomplete="off" maxlength="20" >
+            </div>
+            <div id="formfoot">
+                <button id="BSignIn" type="submit">Sign In</button>
             </div>
         </div>
     </div>
@@ -668,6 +663,34 @@
 </html>
 <script src="JS/xSlider.js"></script>
 <script>
+    $(function () {
+        $("#BSignIn").click(function () {
+            var Name = $("input-topright-loginInput").val;
+            var pwd = $("input-bottomright-loginInput").val;
+            if (Name == "" || Name == Name.trim())
+                alert("账号不能为空！");
+            else if (pwd == "")
+                alert("请填写密码！");
+            else {
+                $.ajax({
+                    url: "../Login.ashx",
+                    type: "post",
+                    data:{ "Name": Name, "Pwd": pwd },
+                    success: function (data) {
+                        if (data == 1) {
+                            window.location.href = "Origin.html";
+                        }
+                        else {
+                            alert("登录失败！")
+                        }
+                    }
+                })
+            }
+        })
+
+    })
+</script>
+<!--<script>
    
     function openNew() {
 
@@ -709,16 +732,16 @@
             return false;
         };
     };
-</script>
-
-<!--<script>
-    myFocus.set({
-        id: 'boxId',
-        pattern: 'mF_peijianmall',
-        time: 3,
-        trigger: 'click',
-        width: 748,
-        height: 250,
-        txtHeight: 0
-    });
 </script>-->
+
+<script>
+    //设置登录页面弹出效果
+    $("#login").click(function () {
+        $(".hide-center").fadeIn("slow");
+        $(".overCurtain").fadeIn("slow");
+    })
+    $("#close").click(function () {
+        $(".hide-center").fadeOut("slow")
+        $(".overCurtain").fadeOut("slow")
+    })
+</script>

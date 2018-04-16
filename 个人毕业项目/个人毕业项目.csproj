@@ -41,6 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,6 +69,7 @@
     <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="CSS\Carousel.css" />
+    <Content Include="CSS\Loginstyle.css" />
     <Content Include="CSS\PassportStyle.css" />
     <Content Include="CSS\slider.css" />
     <Content Include="CSS\Originstyle.css" />
@@ -77,7 +79,7 @@
     <Content Include="Image\ICO\list_bg.jpg" />
     <Content Include="Image\ICO\loading.gif" />
     <Content Include="Image\ICO\logos_bac.jpg" />
-    <Content Include="JS\jquery-3.2.1.min %281%29.js" />
+    <Content Include="JS\jquery-3.2.1.min.js" />
     <Content Include="JS\xSlider.js" />
     <Content Include="JS\ZoomPic.js" />
     <Content Include="myFocus\jquery-3.3.1.min.js" />
@@ -152,6 +154,7 @@
     <Content Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\entries" />
     <Content Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\prop-base\btn-bg.gif.svn-base" />
     <Content Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\text-base\btn-bg.gif.svn-base" />
+    <Content Include="Login.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,6 +268,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +326,20 @@
     <Folder Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\tmp\prop-base\" />
     <Folder Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\tmp\props\" />
     <Folder Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\tmp\text-base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{acf7f51b-8ec7-4a9b-8356-0141b0151104}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{975f8730-9269-40a7-a9bb-df775ab6030a}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{1de77073-f6c3-4ee4-8ebb-2802ca9f5cd6}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

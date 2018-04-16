@@ -11,7 +11,7 @@ namespace DAL
 {
     public class DBHepler
     {
-        static string strsql = ConfigurationManager.ConnectionStrings["SQLconn"].ConnectionString;
+        static string strsql = ConfigurationManager.ConnectionStrings["SQL"].ConnectionString;
         static SqlConnection conn = new SqlConnection(strsql);
         
         static public void Open()
@@ -41,11 +41,11 @@ namespace DAL
                 {
                     cmd.Parameters.AddRange(p);
                 }
-                dr = cmd.ExecuteReader();
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Console.Write(ex.Message);
                 throw;
             }
             return dr;

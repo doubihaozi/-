@@ -307,7 +307,6 @@ cite,i,em{
 }
 .focus-wrap .focus-box .focus-img li {
     position: relative;
-    z-index: 1;
     float: left;
     overflow: hidden;
     width: 33.33%;

@@ -16,6 +16,10 @@ namespace BLL
             return DAL.CustomerDAL.InsertCustomers(ID, LoginName, Password);
         }
 
+        public static List<Customer> GetCustomer()
+        {
+            return DAL.CustomerDAL.GetCustomers();
+        }
         /// 方法:对密码进行MD5加密
         /// </summary>
         /// <param name="pwd">原始密码</param>

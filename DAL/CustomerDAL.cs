@@ -12,19 +12,24 @@ namespace DAL
 {
     public class CustomerDAL
     {
-        public static List<Customer> GetCustomers()
+        public static List<Customer> GetCustomers(string where=null)
         {
-            SqlDataReader dr = DBHepler.ExecuteReader("select LoginName,Password form NFBook");
+            SqlDataReader dr = DBHepler.ExecuteReader("select ROW_NUMBER() over (Order by LoginName) as LoginName, *from Customer where [state]=0");
             List<Customer> customers = new List<Customer>();
             Customer customer = null;
-            while(dr.Read())
+            if (dr!=null)
             {
-                customer = new Customer();
-                customer.LoginName = dr["LoginName"].ToString();
-                customer.Password = dr["Password"].ToString();
-                customers.Add(customer);
+                while(dr.Read())
+                    {
+                        customer = new Customer();
+                        customer.LoginName = dr["LoginName"].ToString();
+                        customer.Password = dr["Password"].ToString();
+                        customer.State = (int)dr["State"];
+                        customers.Add(customer);
+                    }
+                DBHepler.Close();
             }
-            dr.Close();
+           
             return customers;
         }
         public static int InsertCustomers(string ID,string LoginName,string Password)
