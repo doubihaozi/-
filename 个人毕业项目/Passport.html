@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/x-icon" href="//qidian.gtimg.com/qd/favicon/qd_icon.fb0b7.ico" />
     <link href="CSS/PassportStyle.css" rel="stylesheet" />
+    <script src="JS/jquery-3.2.1.min.js"></script>
     <title>帐号注册</title>
 </head>
 <body>
@@ -21,16 +22,15 @@
             <div class="reg-wrap">
                 <div class="reg-step">
                     <span class="lang act"><i>1</i>填写注册信息</span>
-                    <span>注册成功</span>
                 </div>
             </div>
             <div class="reg-form-wrap">
                 <form>
                     <div class="reg-form-list form-list">
                         <dl>
-                            <dd class="phone">
-                                <em>手机号</em>
-                                <input class="min" id="Phone" type="text" placeholder="输入手机号码" />
+                            <dd>
+                                <em>昵称</em>
+                                <input id="Name" type="text" placeholder="昵称" />
                             </dd>
                             <dd>
                                 <em>账号</em>
@@ -38,20 +38,15 @@
                             </dd>
                             <dd>
                                 <em>密码</em>
-                                <input  id="Password" type="password" placeholder="6-18位大小写字母、符号或者数字" />
+                                <input  id="Password" type="password" placeholder="6-18位大小写字母、符号或者数字"   />
                             </dd>
                             <dd>
                                 <em>确认密码</em>
                                 <input  id="Password2" type="password" placeholder="再次输入密码" />
                             </dd>
                         </dl>
-                        <div class="deal">
-                            <input type="checkbox" id="deal" name="checkbox" checked="">
-                            <label for="deal" class="ui-checkbox"></label>
-                            <label for="deal">我已阅读并同意</label>
-                            <a href="https://passport.yuewen.com/pact.html?mobile=0" target="_blank">《用户服务协议》</a>
-                        </div>
-                        <a class="red-btn go-reg">立即注册</a>
+                        
+                        <button id="Register" class="red-btn go-reg">立即注册</button>
                     </div>
                 </form>
             </div>
@@ -60,6 +55,7 @@
 </body>
 </html>
 <script>
+    //随机生成ID
     function newGuid() {
         var guid = "";
         for (var i = 1; i < 32; i++) {
@@ -68,7 +64,7 @@
             if ((i == 8) || (i == 12) || (i == 16) || (i == 20)) {
                 guid += "-";
             }
-            return guid;
+            return guid; 
         }
     }
     function InsertCustomer() {
@@ -78,8 +74,78 @@
             document.getElementById("Uid").innerHTML = "请输入用户名";
             return false;
         } else if (!regName == userName) {
-
-        } 
+            document.getElementById("Uid").innerHTML = "用户名不符合格式";
+            return false;
+        }
     }
-    
+    $("#Register").click(function () {
+        var Name = $("#Name").val();
+        var LoginName = $("#Uid").val();
+        var pwd = $("#Password").val();
+        var pwd2 = $("#Password2").val();
+        if (LoginName == "")
+            alert("账号不能为空！");
+        else if (pwd == "")
+            alert("请填写密码！")
+        else if (pwd != pwd2)
+            alert("两次密码不一致！")
+        else {
+            $.ajax({
+                type: "post",   
+                url: "Register.ashx",
+                data: { "LoginName": LoginName, "Password": pwd, "Name": Name},
+                success: function (data) {
+                    if (data == 1) {
+                        alert("注册成功！");
+                        window.location.href = "Origin.html";
+                    }
+                    else
+                        alert("注册失败！");
+                }
+            });
+        }
+    });
+    //$("#Register").click(function () {
+    //    InsertCustomer();
+    //    Register();
+    //});
+   
+    //function Register() {
+    //    var ID = newGuid();
+    //    //获取
+    //    var username = $("#Uid").val();
+    //    var pwd = $("#Password").val();
+    //    var pwd2 = $("#Password").val();
+    //    //判断用户是否输入用户名密码之类的
+    //    if (username == "" && pwd == "") {
+    //        alert("请输入账号和密码！")
+    //    }
+    //    else if (username == "") {
+    //        alert("请输入账号！");
+    //    }
+    //    else if (pwd == "") {
+    //        alert("请输入密码！")
+    //    }
+    //    else if (pwd != pwd2) {
+    //        alert("密码不一致");
+    //        return;
+    //    }
+    //    var par ="ID"+ID+"&username=" + username + "&pwd=" + pwd;
+    //    $.ajax({
+    //        url: "Register.ashx",
+    //        type: "GET",
+    //        data: par,
+    //        async: false,
+    //        cache: false,//是否缓存
+    //        dataType: "Text",
+    //        success: function (data) {//data是UserRegister.ashx那里写入的“true”
+    //            if (data == "true") {
+    //                alert("注册成功");
+    //            }
+    //            else {
+    //                alert("用户名已存在");
+    //            }
+    //        }
+    //    });
+    //}
 </script>

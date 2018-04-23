@@ -10,15 +10,27 @@ namespace BLL
 {
     public class CustomerBLL
     {
-        public static int InsertCustomer(string ID,string LoginName,string Password)
+        public static int InsertCustomer(Customer cus)
         {
-            Encryption(Password);
-            return DAL.CustomerDAL.InsertCustomers(ID, LoginName, Password);
+            //Encryption(cus.Password);
+            return DAL.CustomerDAL.InsertCustomers(cus);
         }
 
-        public static List<Customer> GetCustomer()
+        public static Customer GetCustomer(string LoginName,string Password)
         {
-            return DAL.CustomerDAL.GetCustomers();
+        //    Password = Encryption(Password);
+            if(new Rule.CustomerRule().TestInsert(LoginName))
+            {
+                return new Customer() {  UserName = "用户名错误！" };
+            }
+
+            List<Customer> Login = CustomerDAL.GetCustomers("where [LoginName]='" + LoginName + "'and [Password]='" + Password + "'");
+            if (Login.Count != 1)
+            {
+                return new Customer() { LoginName = "密码错误！" };
+            }
+            else
+                return Login[0];
         }
         /// 方法:对密码进行MD5加密
         /// </summary>

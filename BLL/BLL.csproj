@@ -53,6 +53,10 @@
       <Project>{1de77073-f6c3-4ee4-8ebb-2802ca9f5cd6}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Rule\Rule.csproj">
+      <Project>{650da676-2f97-4858-a74b-6a72f2a73df2}</Project>
+      <Name>Rule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

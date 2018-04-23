@@ -80,6 +80,7 @@
     <Content Include="Image\ICO\loading.gif" />
     <Content Include="Image\ICO\logos_bac.jpg" />
     <Content Include="JS\jquery-3.2.1.min.js" />
+    <Content Include="JS\Login.js" />
     <Content Include="JS\xSlider.js" />
     <Content Include="JS\ZoomPic.js" />
     <Content Include="myFocus\jquery-3.3.1.min.js" />
@@ -155,6 +156,7 @@
     <Content Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\prop-base\btn-bg.gif.svn-base" />
     <Content Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\text-base\btn-bg.gif.svn-base" />
     <Content Include="Login.ashx" />
+    <Content Include="Register.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -272,6 +274,9 @@
       <DependentUpon>Login.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.ashx.cs">
+      <DependentUpon>Register.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

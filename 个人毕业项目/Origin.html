@@ -8,6 +8,7 @@
     <link href="CSS/Carousel.css" rel="stylesheet" />
     <link href="CSS/Loginstyle.css" rel="stylesheet" />
     <script src="JS/jquery-3.2.1.min.js"></script>
+
     <title>起点中文网</title>
     <style type="text/css">
         #login {
@@ -640,17 +641,17 @@
             </div>
             <button type="button" id="close">X</button>
         </div>
-        <div id="formbody">
-            <div class="loginUserName">
-                <input id="input-topright-loginInput" name="userName" class="loginInput" placeholder="userName" type="text"autocomplete="off" maxlength="11" >
+            <div id="formbody">
+                <div class="loginUserName">
+                    <input id="input-topright-loginInput" name="userName" class="loginInput" placeholder="userName" type="text" autocomplete="off" maxlength="11">
+                </div>
+                <div class="loginPassword">
+                    <input id="input-bottomright-loginInput" name="password" class="loginInput" placeholder="password" type="password" style="border-bottom-right-radius:5px;" autocomplete="off" maxlength="20">
+                </div>
+                <div id="formfoot">
+                    <button id="BSignIn" type="submit">Sign In</button>
+                </div>
             </div>
-            <div class="loginPassword">
-                <input id="input-bottomright-loginInput" name="password" class="loginInput" placeholder="password" type="password" style="border-bottom-right-radius:5px;"autocomplete="off" maxlength="20" >
-            </div>
-            <div id="formfoot">
-                <button id="BSignIn" type="submit">Sign In</button>
-            </div>
-        </div>
     </div>
     <!--<div id="mask">
     </div>
@@ -663,77 +664,28 @@
 </html>
 <script src="JS/xSlider.js"></script>
 <script>
-    $(function () {
-        $("#BSignIn").click(function () {
-            var Name = $("input-topright-loginInput").val;
-            var pwd = $("input-bottomright-loginInput").val;
-            if (Name == "" || Name == Name.trim())
-                alert("账号不能为空！");
-            else if (pwd == "")
-                alert("请填写密码！");
-            else {
-                $.ajax({
-                    url: "../Login.ashx",
-                    type: "post",
-                    data:{ "Name": Name, "Pwd": pwd },
-                    success: function (data) {
-                        if (data == 1) {
-                            window.location.href = "Origin.html";
-                        }
-                        else {
-                            alert("登录失败！")
-                        }
-                    }
-                })
+    $("#BSignIn").click(function () {
+        var LoginName = $("#input-topright-loginInput").val();
+        var Password = $("#input-bottomright-loginInput").val();
+        if (LoginName == "")
+            alert("账号不能为空！");
+        else if (Password == "")
+            alert("密码不能为空！");
+        $.ajax({
+            type: "get",
+            url: "Login.ashx",
+            data: { "LoginName": LoginName, "Pwd": Password },
+            success: function (data) {
+                if (data == 1) {
+                    window.location.href = "Origin.html";
+                }
+                else {
+                    alert("登录失败！")
+                }
             }
         })
-
     })
 </script>
-<!--<script>
-   
-    function openNew() {
-
-        //获取页面的高度和宽度
-        var sHeight = document.documentElement.scrollHeight;
-        var sWidth = document.documentElement.scrollWidth;
-        //可视区域的高度和宽度
-        var wHeight = document.documentElement.clientHeight;
-        var wWidth = document.documentElement.clientWidth;
-
-        var oMask = document.createElement("div");
-        oMask.id = "mask";
-        oMask.style.height = sHeight + "px";
-        oMask.style.width = sWidth + "px";
-        document.body.appendChild(oMask);
-
-        var oLogin = document.createElement("div");
-        oLogin.id = "login";
-        oLogin.innerHTML = "<div class='loginCo'><div id = 'close'>点击关闭</div ></div >";
-        document.body.appendChild(oLogin);
-        //获取Login的高度和宽度
-        var dHeight = oLogin.offsetHeight;
-        var dWidth = oLogin.offsetWidth;
-        //设置登录框的left和top
-        oLogin.style.left = (wWidth - dWidth) / 2 + "px";
-        oLogin.style.top = (wHeight - dHeight) / 2 + "px";
-        //点击关闭按钮
-        var oClose = document.getElementById("close");
-
-        oClose.onclick = oMask.onclick = function () {
-            document.body.removeChild(oLogin);
-            document.body.removeChild(oMask);
-        };
-    };
-    window.onload = function () {
-        var Login = document.getElementById("login-btn");
-        Login.onclick = function () {
-            openNew();
-            return false;
-        };
-    };
-</script>-->
-
 <script>
     //设置登录页面弹出效果
     $("#login").click(function () {

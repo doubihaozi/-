@@ -18,11 +18,21 @@ namespace 个人毕业项目
         {
             
             context.Response.ContentType = "text/plain";
-            string name = context.Request.Params["Name"];
-            string pwd = context.Request.Params["Pwd"];
-            List<Customer> customers = CustomerBLL.GetCustomer();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Customer));
-            ser.WriteObject(context.Response.OutputStream, customers);
+            string name = context.Request.Params["LoginName"];
+            string pwd = context.Request.Params["Password"];
+            Customer customer = CustomerBLL.GetCustomer(name, pwd);
+            try
+            {
+                context.Session["User"] = customer;
+                context.Response.Write(1);
+                return;
+            }
+            catch
+            {
+                context.Response.Write(0);
+                return;
+            }
+            
         }
         
         public bool IsReusable

@@ -14,7 +14,7 @@ namespace DAL
     {
         public static List<Customer> GetCustomers(string where=null)
         {
-            SqlDataReader dr = DBHepler.ExecuteReader("select ROW_NUMBER() over (Order by LoginName) as LoginName, *from Customer where [state]=0");
+            SqlDataReader dr = SQLHelp.ExecReader("select ROW_NUMBER() over (Order by LoginName) as LoginName, *from Users ");
             List<Customer> customers = new List<Customer>();
             Customer customer = null;
             if (dr!=null)
@@ -24,23 +24,24 @@ namespace DAL
                         customer = new Customer();
                         customer.LoginName = dr["LoginName"].ToString();
                         customer.Password = dr["Password"].ToString();
-                        customer.State = (int)dr["State"];
                         customers.Add(customer);
                     }
-                DBHepler.Close();
+                SQLHelp.CloseConnection();
             }
            
             return customers;
         }
-        public static int InsertCustomers(string ID,string LoginName,string Password)
+
+        public static int InsertCustomers(Customer cus)
         {
+            string sql = "insert into Users values(@LoginName,@Password,@UserName)";
             SqlParameter[] p =
             {
-                new SqlParameter("@ID",ID),
-                new SqlParameter("@LoginName",LoginName),
-                new SqlParameter("@Password",Password)
+                new SqlParameter("@LoginName",cus.LoginName),
+                new SqlParameter("@Password",cus.Password),
+                new SqlParameter("@UserName",cus.UserName)
             };
-            return DBHepler.ExecuteNonQuery("insert into Customer(ID,LoginName,Password) vlaues(@ID,@LoginName,@Password)");
+            return SQLHelp.ExecQuery(sql,CommandType.Text,p);
         }
     }
 }
