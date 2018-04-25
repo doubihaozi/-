@@ -205,7 +205,8 @@ label {
     margin-bottom:4px;
     background-color:#d5d5d6;
 }
-.main-nav-warp .main-nav li {
+.main-nav-warp .main-nav > ul >li {
+    position:relative;
     float: left;
 }
 .main-nav-warp .main-nav li a {
@@ -214,11 +215,25 @@ label {
     height:38px;
     padding:0 32px;
     color:#fff;
-    border-bottom:2px solid #333;
+    /*border-bottom:2px solid #333;*/
 }
-li,ul{
-    list-style:none outside none;
-}
+
+    .main-nav-warp .main-nav .nav-li .nav-li-list {
+        position: absolute;
+        border-bottom: none;
+        top: 38px;
+        background-color: #3e3d43;
+        width:150px;
+        display:none;
+        left:-30px;
+        
+    }
+        .main-nav-warp .main-nav .nav-li:hover .nav-li-list{
+            display:block;
+        }
+        li, ul {
+            list-style: none outside none;
+        }
 .mb40{
     margin-bottom:40px;
 }

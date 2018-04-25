@@ -4,15 +4,14 @@ using System.Web;
 using BLL;
 using Model;
 using System.Runtime.Serialization.Json;
-
-
+using System.Linq;
 
 namespace 个人毕业项目
 {
     /// <summary>
     /// Login 的摘要说明
     /// </summary>
-    public class Login : IHttpHandler
+    public class Login : IHttpHandler,System.Web.SessionState.IRequiresSessionState
     {
         public void ProcessRequest(HttpContext context)
         {
@@ -20,10 +19,12 @@ namespace 个人毕业项目
             context.Response.ContentType = "text/plain";
             string name = context.Request.Params["LoginName"];
             string pwd = context.Request.Params["Password"];
-            Customer customer = CustomerBLL.GetCustomer(name, pwd);
+            context.Session["Users"] = null;
+            Customer customer = null;
             try
             {
-                context.Session["User"] = customer;
+                customer =CustomerBLL.GetCustomer().Where(U => U.LoginName == name && U.Password == pwd).First();
+                context.Session["Users"] = customer;
                 context.Response.Write(1);
                 return;
             }

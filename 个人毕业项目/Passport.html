@@ -93,16 +93,17 @@
             $.ajax({
                 type: "post",   
                 url: "Register.ashx",
-                data: { "LoginName": LoginName, "Password": pwd, "Name": Name},
+                data: { "LoginName": LoginName, "Password": pwd, "Name": Name },
                 success: function (data) {
                     if (data == 1) {
-                        alert("注册成功！");
+                        alert("注册成功！")
                         window.location.href = "Origin.html";
                     }
                     else
                         alert("注册失败！");
                 }
             });
+            
         }
     });
     //$("#Register").click(function () {

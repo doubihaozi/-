@@ -32,8 +32,8 @@
                 <a id="switchEl">繁体版</a>
             </div>
             <div class="Login-box fr">
-                <div class="sin-out">
-                    <span><a href="#" id="login" class="black">登录</a></span>
+                <div class="sin-out" id="user">
+                    <span><a href="/Login.html" id="login" class="black">登录</a></span>
                     <em>|</em>
                     <span><a href="/Passport.html" id="reg-btn">注册</a></span>
                 </div>
@@ -76,7 +76,16 @@
                         </span>
                     </li>
                     <li class="nav-li"><a href="#">全部作品</a></li>
-                    <li class="nav-li"><a href="#">排行</a></li>
+                    <li class="nav-li li-list-top">
+                        <a href="#">排行</a>
+                        <ul class="nav-li-list">
+                            <li><a href="#">1、牧神记</a></li>
+                            <li><a href="#">2、永夜君王</a></li>
+                            <li><a href="#">3、超维入侵</a></li>
+                            <li><a href="#">4、道闯乾坤</a></li>
+                            <li><a href="#">5、红色莫斯科</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-li"><a href="#">完本</a></li>
                     <li class="nav-li"><a href="#">免费</a></li>
                     <li class="nav-li"><a href="#">作家专区</a></li>
@@ -633,26 +642,6 @@
             </div>
         </div>
     </div>
-    <div class="overCurtain"></div>
-    <div class="hide-center">
-        <div id="formhead">
-            <div id="formhead-title">
-                User Login
-            </div>
-            <button type="button" id="close">X</button>
-        </div>
-            <div id="formbody">
-                <div class="loginUserName">
-                    <input id="input-topright-loginInput" name="userName" class="loginInput" placeholder="userName" type="text" autocomplete="off" maxlength="11">
-                </div>
-                <div class="loginPassword">
-                    <input id="input-bottomright-loginInput" name="password" class="loginInput" placeholder="password" type="password" style="border-bottom-right-radius:5px;" autocomplete="off" maxlength="20">
-                </div>
-                <div id="formfoot">
-                    <button id="BSignIn" type="submit">Sign In</button>
-                </div>
-            </div>
-    </div>
     <!--<div id="mask">
     </div>
     <div id="login">
@@ -663,7 +652,7 @@
 </body>
 </html>
 <script src="JS/xSlider.js"></script>
-<script>
+<!--<script>
     $("#BSignIn").click(function () {
         var LoginName = $("#input-topright-loginInput").val();
         var Password = $("#input-bottomright-loginInput").val();
@@ -685,8 +674,17 @@
             }
         })
     })
-</script>
+</script>-->
 <script>
+    $(function () {
+        alert("666666666");
+        $.getJSON("UserLogin.ashx", function (data) {
+            $("#user").html("<span><a href='#'>" +data + "</a></span>");
+        })
+    })
+    
+</script>
+<!--<script>
     //设置登录页面弹出效果
     $("#login").click(function () {
         $(".hide-center").fadeIn("slow");
@@ -696,4 +694,4 @@
         $(".hide-center").fadeOut("slow")
         $(".overCurtain").fadeOut("slow")
     })
-</script>
+</script>-->

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="CSS/PassportStyle.css" rel="stylesheet" />
+    <script src="JS/jquery-3.2.1.min.js"></script>
+    <title>用户登录</title>
+</head>
+<body>
+    <div class="wrap">
+    <div class="header rec-header qidian">
+        <div class="box-center">
+            <div class="logo cf">
+                <a href="/Origin.html"></a>
+                <em></em>
+                <span class="lang">用户登录</span>
+            </div>
+        </div>
+    </div>
+    <div class="box-center">
+        <div class="reg-wrap">
+            <div class="reg-step">
+                <span class="lang act"><i>1</i>登录</span>
+            </div>
+        </div>
+        <div class="reg-form-wrap">
+                <div class="reg-form-list form-list">
+                    <dl>
+                        <dd>
+                            <em>账号</em>
+                            <input id="Uid" type="text" placeholder="填写账号" />
+                        </dd>
+                        <dd>
+                            <em>密码</em>
+                            <input id="Password" type="password" placeholder="6-18位大小写字母、符号或者数字" />
+                        </dd>                       
+                    </dl>
+                    <button id="Login" class="red-btn go-reg">立即登录</button>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        $("#Login").click(function () {
+            var LoginName = $("#Uid").val();
+            var Password = $("#Password").val();
+            if (LoginName == "")
+                alert("账号不能为空！");
+            else if (Password == "")
+                alert("密码不能为空！");
+            else {
+                $.ajax({
+                    url: "Login.ashx",
+                    type: "get",
+                    data: { "LoginName": LoginName, "Password": Password },
+                    success: function (data) {
+                        if (data == 1)
+                            window.location.href = "Origin.html";
+                        else {
+                            alert("登录失败！");
+                        }
+                    }
+
+                })
+            }
+        })
+    })
+        
+</script>

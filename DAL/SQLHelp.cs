@@ -104,25 +104,27 @@ namespace DAL
             /// <returns>数据读取对象</returns>
             public static SqlDataReader ExecReader(string sqlQuery, CommandType cmType = CommandType.Text, SqlParameter[] parms = null)
             {
-                //创建命令对象
-                SqlCommand cm = new SqlCommand(sqlQuery, conn);
-                //设置命令类型
-                cm.CommandType = cmType;
+               
+                    //创建命令对象
+                    SqlCommand cm = new SqlCommand(sqlQuery, conn);
+                    //设置命令类型
+                    cm.CommandType = cmType;
+            
+                    //如果参数列表不为空，则将其添加到命令参数集合中
+                    if (parms != null)
+                        cm.Parameters.AddRange(parms);
 
-                //如果参数列表不为空，则将其添加到命令参数集合中
-                if (parms != null)
-                    cm.Parameters.AddRange(parms);
-
-                try
-                {
-                    //执行操作，如果成功则返回数据读取对象
-                    return cm.ExecuteReader();
-                }
-                catch
-                {
-                    //如果有异常则返回空
-                    return null;
-                }
+                    try
+                    {
+                        //执行操作，如果成功则返回数据读取对象
+                        return cm.ExecuteReader();
+                    }
+                    catch(Exception ex)
+                    {
+                        //如果有异常则返回空
+                        return null;
+                    }
+                
             }
 
             /// <summary>

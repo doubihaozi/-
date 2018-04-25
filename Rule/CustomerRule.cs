@@ -15,7 +15,7 @@ namespace Rule
         /// <returns>是否存在</returns>
         public bool TestInsert(string uid)
         {
-            return (int)DAL.SQLHelp.ExecScalar("select count(*) from [Customer] where [LoginName]='" + uid + "' and [State]=0") == 0;
+            return (int)DAL.SQLHelp.ExecScalar("select count(*) from [Customer] where [LoginName]='" + uid + "'") == 0;
         }
     }
 }

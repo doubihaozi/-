@@ -83,6 +83,7 @@
     <Content Include="JS\Login.js" />
     <Content Include="JS\xSlider.js" />
     <Content Include="JS\ZoomPic.js" />
+    <Content Include="Login.html" />
     <Content Include="myFocus\jquery-3.3.1.min.js" />
     <Content Include="myFocus\mf-pattern\img\.svn\all-wcprops" />
     <Content Include="myFocus\mf-pattern\img\.svn\entries" />
@@ -157,6 +158,7 @@
     <Content Include="myFocus\mf-pattern\img\mF_tbhuabao\.svn\text-base\btn-bg.gif.svn-base" />
     <Content Include="Login.ashx" />
     <Content Include="Register.ashx" />
+    <Content Include="UserLogin.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -276,6 +278,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.ashx.cs">
       <DependentUpon>Register.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.ashx.cs">
+      <DependentUpon>UserLogin.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
